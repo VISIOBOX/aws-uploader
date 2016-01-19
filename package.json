@@ -1,0 +1,21 @@
+{
+  "name": "aws-uploader",
+  "version": "0.0.1",
+  "private": false,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "3.3.8",
+    "formidable": "1.0.15",
+    "node-static": ">=0.6.5",
+    "body-parser":"1.6.5",
+    "dateformat":"*",
+    "aws-sdk":"1.18.0",
+    "s3-upload-stream":"0.6.1",
+    "image-size":"0.3.5",
+    "gm":"1.17.0",
+    "mkdirp":"0.5.0",
+    "underscore":"*"
+  }
+}

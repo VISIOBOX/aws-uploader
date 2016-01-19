@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AWS Uploader Demo</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap-material-design.min.css">
+    <link rel="stylesheet" href="css/ripples.min.css">
+    <script src="js/libs/jquery/jquery.min.js"></script>
+    <script src="js/libs/jquery/jquery-ui.min.js"></script>
+    <script src="js/libs/underscore.min.js"></script>
+    <script src="js/libs/bootstrap/material.min.js"></script>
+    <script src="js/libs/bootstrap/ripples.min.js"></script>
+    <script src="js/libs/jquery/fileupload/canvas-to-blob.min.js"></script>
+    <script src="js/libs/jquery/fileupload/jquery.fileupload.js"></script>
+    <script src="js/libs/jquery/fileupload/jquery.fileupload-process.js"></script>
+    <script src="js/libs/jquery/fileupload/jquery.fileupload-validate.js"></script>
+    <script src="js/uploader.js"></script>
+</head>
+<body>
+    <div class="header-panel shadow-z-2">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-5">
+                    <h1>AWS UPLOADER DEMO</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="form-group col-xs-10">
+                <label class="control-label" for="uploader">Choose files for uploading</label>
+                <input type="file" id="uploader" multiple>
+                <input type="text" readonly class="form-control" placeholder="Browse...">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-10">
+                <h1>Uploaded mediafiles</h1>
+                <div id="uploadFilesContainer" class="list-group">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
