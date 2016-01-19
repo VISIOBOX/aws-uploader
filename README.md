@@ -22,10 +22,13 @@ Node.js сервер multipart загрузки медиафайлов в **Amaz
 ### Настройка FFMPEG
 Для возможности работы с видеофайлами необходимо установить FFMPEG с поддержкой кодека h264 и модуля ffprobe:
 https://ffmpeg.org/download.html
+
 Или самостоятельная сборка на примере Ubuntu: http://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu
+
 После установки в консоле наберите:
-`ffmpeg`. Ответ будет в стиле: ffmpeg version N-56671-ge024953 Copyright (c) 2000-2013 the FFmpeg developers ...
-`ffprobe`. Ответ будет в стиле: ffprobe version N-56671-ge024953 Copyright (c) 2007-2013 the FFmpeg developers ...
+
+1. `ffmpeg`. Ответ будет в стиле: ffmpeg version N-56671-ge024953 Copyright (c) 2000-2013 the FFmpeg developers ...
+2. `ffprobe`. Ответ будет в стиле: ffprobe version N-56671-ge024953 Copyright (c) 2007-2013 the FFmpeg developers ...
 
 ### Конфигурация сервера
 Конфигурация сервера находится в файле **config.json**
@@ -119,24 +122,24 @@ https://ffmpeg.org/download.html
 ```
 
 #### Параметры валидации:
-Корневые параметры:
-**minFileSize** - Минимальный размер файла в байтах. Не обязательный параметр, по умолчанию **5000** (5кб). 
-**maxFileSize** - Максимальный размер файла в байтах. Не обязательный параметр, по умолчанию **1000000000** (1гб).
-**acceptFileTypes** - Допустимые форматы файлов. Regex. Не обязательный параметр, по умолчанию **/\.(jpe?g|png|mp4)$/i** (JPEG, JPG, PNG, MP4). 
-**acceptMimeTypes** - Допустимые mime-type файлов. Regex. Не обязательный параметр, 
+##### Корневые параметры:
+* **minFileSize** - Минимальный размер файла в байтах. Не обязательный параметр, по умолчанию **5000** (5кб). 
+* **maxFileSize** - Максимальный размер файла в байтах. Не обязательный параметр, по умолчанию **1000000000** (1гб).
+* **acceptFileTypes** - Допустимые форматы файлов. Regex. Не обязательный параметр, по умолчанию **/\.(jpe?g|png|mp4)$/i** (JPEG, JPG, PNG, MP4). 
+* **acceptMimeTypes** - Допустимые mime-type файлов. Regex. Не обязательный параметр, 
 по умолчанию **/(image\/jpe?g||image\/png|video\/mp4|application\/mp4)$/i** (image/jpeg, image/jpg, image/png, video/mp4, application/mp4). 
 
-Параметры секции **dimensions**: 
-**maxFileWidth** - Максимальная ширина медиафайла. Обязательный параметр если **checkStrictly=false**.
-**minFileWidth** - Минимальная ширина медиафайла. Обязательный параметр если **checkStrictly=false**. 
-**maxFileHeight** - Максимальная высота медиафайла. Обязательный параметр если **checkStrictly=false**.
-**minFileHeight** - Минимальная высота медиафайла. Обязательный параметр если **checkStrictly=false**.
-**width** - Строгая валидация ширины файла. Обязательный параметр если **checkStrictly=true**.
-**height** - Строгая валидация высоты файла. Обязательный параметр если **checkStrictly=true**.
-**ratio** - Проверка aspect ratio. Не обязательный параметр.
+##### Параметры секции **dimensions**: 
+* **maxFileWidth** - Максимальная ширина медиафайла. Обязательный параметр если **checkStrictly=false**.
+* **minFileWidth** - Минимальная ширина медиафайла. Обязательный параметр если **checkStrictly=false**. 
+* **maxFileHeight** - Максимальная высота медиафайла. Обязательный параметр если **checkStrictly=false**.
+* **minFileHeight** - Минимальная высота медиафайла. Обязательный параметр если **checkStrictly=false**.
+* **width** - Строгая валидация ширины файла. Обязательный параметр если **checkStrictly=true**.
+* **height** - Строгая валидация высоты файла. Обязательный параметр если **checkStrictly=true**.
+* **ratio** - Проверка aspect ratio. Не обязательный параметр.
 
-Параметры секции **video** и **image**:
-**checkStrictly** - Если **true**, высота и ширина файла проверяется строго по **width** и **height** параметрам. Не обязательный параметр. По умолчанию **false**
+##### Параметры секции **video** и **image**:
+*  **checkStrictly** - Если **true**, высота и ширина файла проверяется строго по **width** и **height** параметрам. Не обязательный параметр. По умолчанию **false**
 
 ## Формат ответа
 Для каждого загружаемого файла при завершении загрузки выдается следующий ответ:
@@ -164,32 +167,36 @@ https://ffmpeg.org/download.html
 ```
 
 Возможно, следующие параметры требуют пояснения:
-**path** - URI файла в CDN Cloud Front
-**preview** - URI превью файла в CDN Cloud Front (Для изображения будет тем-же, что и path)
-**codec** - Тип кодека проставляется только для видео.
-**duration** - Длительность для видео в секундах.
+
+* **path** - URI файла в CDN Cloud Front
+* **preview** - URI превью файла в CDN Cloud Front (Для изображения будет тем-же, что и path)
+* **codec** - Тип кодека проставляется только для видео.
+* **duration** - Длительность для видео в секундах.
 
 ### Статусы валидации:
 Возвращается параметром **errorStatus** в ответе:
-     **0** - OK
-     **10** - File is too small
-     **15** - File is too big
-     **20** - Bad ContentType
-     **25** - Bad filetype
-     **30** - Bad dimension
-     **40** - Bad format
-     **45** - Bad codec
+
+ * **0** - OK
+ * **10** - File is too small
+ * **15** - File is too big
+ * **20** - Bad ContentType
+ * **25** - Bad filetype
+ * **30** - Bad dimension
+ * **40** - Bad format
+ * **45** - Bad codec
 
 
 ## Пример и запуск
 ###Запуск aws-uploader:
 * Установка зависимостей: `npm install`
 * Запуск: `node server`
+
 Перед запуском выполните необходимую конфигурацию проекта.
 
 ###Запуск примера:
-Команда: `node example`
-Доступно по адресу: http://localhost:8050
+* Команда: `node example`
+* Доступно по адресу: http://localhost:8050
+
 Если вы меняли конфигурацию и адрес сервера загрузчика, 
 внесите необходимые изменения в файл **aws-uploader/example/public/js/uploader.js**
 
